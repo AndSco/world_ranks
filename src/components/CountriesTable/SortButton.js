@@ -10,7 +10,7 @@ export const SortButton = ({
   return (
     <button
       className={styles.buttons_common}
-      style={{ justifyContent: value === "name" ? "flex-start" : "inherit" }}
+      style={{ justifyContent: value === "name" ? "flex-start" : "center" }}
       onClick={() => setValueAndDirection(value)}
     >
       <div>{value[0].toUpperCase() + value.slice(1)}</div>

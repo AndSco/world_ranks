@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./CountriesTable.module.css";
 import { SortButton } from "./SortButton";
+import Link from "next/link";
+import { CustomLink } from "../CustomLink";
 
 const orderBy = (param, direction, countries) => {
   if (direction === "asc") {
@@ -50,10 +52,12 @@ export const CountriesTable = ({ countries }) => {
         />
       </div>
       {orderedCountries.map(country => (
-        <article className={styles.row} key={country.name}>
-          <div className={styles.name}>{country.name}</div>
-          <div className={styles.population}>{country.population}</div>
-        </article>
+        <CustomLink href={`/country/${country.alpha3Code}`} key={country.name}>
+          <article className={styles.row}>
+            <div className={styles.name}>{country.name}</div>
+            <div className={styles.population}>{country.population}</div>
+          </article>
+        </CustomLink>
       ))}
     </section>
   );
