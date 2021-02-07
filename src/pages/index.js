@@ -7,7 +7,6 @@ import { getAllCoutriesData } from "../utils/utils";
 
 export default function Home({ data }) {
   const [searchInput, setSearchInput] = useState("");
-  console.log(data);
 
   const handleInput = e => setSearchInput(e.target.value.toLowerCase());
   const filteredCountries = [...data].filter(
@@ -19,14 +18,16 @@ export default function Home({ data }) {
 
   return (
     <Layout>
-      <section className={styles.counts}>
-        Found {filteredCountries.length} countries
-      </section>
-      <SearchInput
-        placeholder="Filter by name, region or sub-region"
-        value={searchInput}
-        onChange={handleInput}
-      />
+      <div className={styles.top_bar}>
+        <section className={styles.counts}>
+          Found {filteredCountries.length} countries
+        </section>
+        <SearchInput
+          placeholder="Filter by name, region or sub-region"
+          value={searchInput}
+          onChange={handleInput}
+        />
+      </div>
       <CountriesTable countries={filteredCountries} />
     </Layout>
   );

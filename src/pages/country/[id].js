@@ -11,7 +11,7 @@ import { CustomLink } from "../../components/CustomLink";
 
 const CountryPage = ({ countryData, neighbourCountries }) => {
   const router = useRouter();
-  console.log(countryData);
+
   if (router.isFallback) {
     return <h2>Loading</h2>;
   }
@@ -88,7 +88,7 @@ const CountryPage = ({ countryData, neighbourCountries }) => {
             <article className={styles.details_panel_row}>
               <div className={styles.details_panel_label}>Gini</div>
               <div className={styles.details_panel_value}>
-                {countryData.gini}%
+                {countryData.gini ? countryData.gini + "%" : "NA"}
               </div>
             </article>
 

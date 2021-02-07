@@ -1,5 +1,6 @@
 .heading {
   display: flex;
+  padding-left: 20px;
 }
 
 .heading button {
@@ -64,4 +65,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.thumbnail_flag {
+  margin-right: 10px;
+  border-radius: 4px;
 }

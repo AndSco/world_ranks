@@ -1,9 +1,37 @@
 import Head from "next/head";
 import styles from "./Layout.module.css";
-import Link from "next/link";
+import Brightness6Rounded from "@material-ui/icons/Brightness6Rounded";
 import { CustomLink } from "../CustomLink";
+import { useState, useEffect } from "react";
 
 export const Layout = ({ children, title = "World ranks" }) => {
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    const themeInStorage = localStorage.getItem("theme");
+    if (themeInStorage) {
+      updateTheme(themeInStorage);
+    }
+  }, []);
+
+  const setDocThemeAttribute = theme => {
+    localStorage.setItem("theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
+  };
+
+  const updateTheme = theme => {
+    setDocThemeAttribute(theme);
+    setTheme(theme);
+  };
+
+  const switchTheme = () => {
+    if (theme === "light") {
+      updateTheme("dark");
+    } else {
+      updateTheme("light");
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -38,6 +66,10 @@ export const Layout = ({ children, title = "World ranks" }) => {
             />
             <rect y="4" width="7.33333" height="4.4" rx="2" fill="#21B6B7" />
           </svg>
+
+          <button className={styles.theme_switcher} onClick={switchTheme}>
+            <Brightness6Rounded />
+          </button>
         </header>
       </CustomLink>
 

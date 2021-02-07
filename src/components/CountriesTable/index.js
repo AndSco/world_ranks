@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./CountriesTable.module.css";
 import { SortButton } from "./SortButton";
-import Link from "next/link";
+import Image from "next/image";
 import { CustomLink } from "../CustomLink";
 
 const orderBy = (param, direction, countries) => {
@@ -50,12 +50,33 @@ export const CountriesTable = ({ countries }) => {
           selectedValue={sortValue}
           sortDirection={sortDirection}
         />
+
+        <SortButton
+          value="area"
+          setValueAndDirection={setValueAndDirection}
+          selectedValue={sortValue}
+          sortDirection={sortDirection}
+        />
+
+        <SortButton
+          value="gini"
+          setValueAndDirection={setValueAndDirection}
+          selectedValue={sortValue}
+          sortDirection={sortDirection}
+        />
       </div>
       {orderedCountries.map(country => (
         <CustomLink href={`/country/${country.alpha3Code}`} key={country.name}>
           <article className={styles.row}>
+            <div className={styles.thumbnail_flag}>
+              <Image src={country.flag} width={30} height={20} />
+            </div>
             <div className={styles.name}>{country.name}</div>
             <div className={styles.population}>{country.population}</div>
+            <div className={styles.population}>{country.area ?? "NA"}</div>
+            <div className={styles.population}>
+              {country.gini ? country.gini + "%" : "NA"}
+            </div>
           </article>
         </CustomLink>
       ))}

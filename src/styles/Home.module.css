@@ -3,8 +3,13 @@
   color: var(--text-color-secondary);
 }
 
-.main {
+.top_bar {
+  margin-bottom: 30px;
 }
 
-.footer {
+@media screen and (min-width: 720px) {
+  .top_bar {
+    display: flex;
+    justify-content: space-between;
+  }
 }

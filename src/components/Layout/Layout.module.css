@@ -19,3 +19,15 @@
   font-size: 0.75rem;
   margin-top: 32px;
 }
+
+.theme_switcher {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: var(--text-color-secondary);
+  margin-left: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
